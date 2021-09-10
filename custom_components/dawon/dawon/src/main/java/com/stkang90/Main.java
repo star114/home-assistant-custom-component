@@ -20,7 +20,6 @@ public class Main {
     private static String deviceIp = "192.168.43.1";
     private static int devicePort = 5000;
 
-    private static String deviceModelName = "B540-WF";
     private static String deviceModel = "B5X";
 
     private static Scanner sc;
@@ -121,18 +120,10 @@ public class Main {
         System.out.println();
 
         System.out.println("#### [디바이스(스마트 플러그) 설정] ###");
-        System.out.println("디바이스 모델명를 입력하세요. (기본값: B540-WF) 지원 모델: B530-WF/B540-WF/B400-W");
-        deviceModelName = sc.next();
-        if (deviceModelName == null || deviceModelName.length() == 0) {
-            deviceModelName = "B540-WF";
-        }
-        if (deviceModelName.equalsIgnoreCase("B540-WF") || deviceModelName.equalsIgnoreCase("B530-WF")) {
+        System.out.println("디바이스 모델을 입력하세요. (기본값: B5X) 테스트 완료: B5X(스마트플러그류)/B400_SW/B400_WI(태양광 발전량 측정 플러그)");
+        deviceModel = sc.next();
+        if (deviceModel == null || deviceModel.length() == 0) {
             deviceModel = "B5X";
-        } else if (deviceModelName.equalsIgnoreCase("B400-W")) {
-            deviceModel = "B400_SW";
-        } else {
-            System.out.println("[오류] - 지원하지 않는 디바이스 모델 입니다.");
-            return false;
         }
 
         System.out.println("디바이스 주소(IP)를 입력하세요. (IPv4) (기본값: " + deviceIp + ")");
@@ -164,7 +155,7 @@ public class Main {
         System.out.println(String.format("MQTT IP: %s", mqttIp));
         System.out.println(String.format("MQTT 포트: %d", mqttPort));
         System.out.println(String.format("MQTT 비밀번호: %s", mqttPasswd));
-        System.out.println(String.format("디바이스 모델명: %s (%s)", deviceModelName, deviceModel));
+        System.out.println(String.format("디바이스 모델: %s", deviceModel));
         System.out.println(String.format("디바이스 IP: %s", deviceIp));
         System.out.println(String.format("디바이스 포트: %d", devicePort));
         System.out.println();
